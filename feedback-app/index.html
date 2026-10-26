@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Online Feedback System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Tell us how we did</h1>
+    <p>Your feedback takes under a minute and helps us improve.</p>
+  </header>
+
+  <main class="layout">
+    <!-- Feedback form -->
+    <section class="panel" aria-labelledby="form-title">
+      <h2 id="form-title">Share your feedback</h2>
+      <form id="feedbackForm" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Karthik Raja" required>
+          <small class="error" id="nameError"></small>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <small class="error" id="emailError"></small>
+        </div>
+
+        <div class="field">
+          <label for="category">What is this about?</label>
+          <select id="category" name="category" required>
+            <option value="">Choose a topic</option>
+            <option>Website design</option>
+            <option>Performance</option>
+            <option>Customer support</option>
+            <option>Suggestion</option>
+            <option>Other</option>
+          </select>
+          <small class="error" id="categoryError"></small>
+        </div>
+
+        <fieldset class="field">
+          <legend>Your rating</legend>
+          <div class="stars" id="stars" role="radiogroup" aria-label="Rating out of 5">
+            <input type="radio" name="rating" id="r5" value="5"><label for="r5" title="Excellent">★</label>
+            <input type="radio" name="rating" id="r4" value="4"><label for="r4" title="Good">★</label>
+            <input type="radio" name="rating" id="r3" value="3"><label for="r3" title="Okay">★</label>
+            <input type="radio" name="rating" id="r2" value="2"><label for="r2" title="Poor">★</label>
+            <input type="radio" name="rating" id="r1" value="1"><label for="r1" title="Very poor">★</label>
+          </div>
+          <small class="error" id="ratingError"></small>
+        </fieldset>
+
+        <div class="field">
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" rows="4" maxlength="300" placeholder="Tell us what worked and what didn't" required></textarea>
+          <div class="counter"><small class="error" id="messageError"></small><span id="count">0 / 300</span></div>
+        </div>
+
+        <button type="submit" class="btn">Send feedback</button>
+      </form>
+    </section>
+
+    <!-- Summary + list -->
+    <section class="panel" aria-labelledby="summary-title">
+      <h2 id="summary-title">What others are saying</h2>
+
+      <div class="stats">
+        <div><strong id="avg">0.0</strong><span>Average rating</span></div>
+        <div><strong id="total">0</strong><span>Responses</span></div>
+      </div>
+
+      <div class="toolbar">
+        <select id="filter" aria-label="Filter by topic">
+          <option value="">All topics</option>
+          <option>Website design</option>
+          <option>Performance</option>
+          <option>Customer support</option>
+          <option>Suggestion</option>
+          <option>Other</option>
+        </select>
+        <button type="button" class="btn ghost" id="clearAll">Delete all</button>
+      </div>
+
+      <ul id="list" class="list"></ul>
+      <p id="empty" class="empty">No feedback yet. Be the first to send one.</p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="js/script.js"></script>
+</body>
+</html>
